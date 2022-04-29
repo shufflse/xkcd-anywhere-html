@@ -1,5 +1,5 @@
 # xkcd html anywhere
-#PlainText code
+
 
 ```
  <img id="xkcd" style="width: 40%; height: 40%">
