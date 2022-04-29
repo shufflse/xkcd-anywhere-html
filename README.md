@@ -1,6 +1,7 @@
-# xkcd
+# xkcd html anywhere
 #PlainText code
 
+```
  <img id="xkcd" style="width: 40%; height: 40%">
 <p id="xkcdalt"> </p>
 <p id="xkcdurl"></p>
@@ -26,3 +27,4 @@ console.log("xkcd data:", xkcdURL, " ", xkcdALT);
   });
 
   </script>  
+```
