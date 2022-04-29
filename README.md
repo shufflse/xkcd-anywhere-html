@@ -1,1 +1,28 @@
-# xkcd-anywhere-html
+# xkcd
+#PlainText code
+
+ <img id="xkcd" style="width: 40%; height: 40%">
+<p id="xkcdalt"> </p>
+<p id="xkcdurl"></p>
+          <script>
+     var settings = {
+           "async": true,
+           "crossDomain": true,
+           "url": "https://xkcd.vercel.app/?comic=latest",
+           "method": "GET"
+         }
+
+         $.ajax(settings).done(function (response) {
+           console.log(response);
+
+var xkcdURL = response.img;
+var xkcdALT = response.alt
+document.getElementById('xkcd').src = xkcdURL;
+document.getElementById('xkcdalt').innerText = xkcdALT;
+document.getElementById('xkcdurl').innerText = "https://xkcd.com/";
+
+console.log("xkcd data:", xkcdURL, " ", xkcdALT);
+
+  });
+
+  </script>  
