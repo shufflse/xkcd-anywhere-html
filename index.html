@@ -43,18 +43,15 @@ console.log("xkcd data:", xkcdURL, " ", xkcdALT);
 <h3> HTML </h3>
 <pre>
 <code>
-
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
 &lt;img id="xkcd"&gt;
 &lt;p id="xkcdalt"&gt; &lt;/p&gt;
 &lt;p id="xkcdurl"&gt; &lt;/p&gt;
-
-
 </code>
 </pre>
 <h3> JavaScript </h3>
 <pre>
   <code>
-
      var settings = {
            "async": true,
            "crossDomain": true,
@@ -74,7 +71,6 @@ document.getElementById('xkcdurl').innerText = "https://xkcd.com/";
 console.log("xkcd data:", xkcdURL, " ", xkcdALT);
 
   });
-
   </code>
 </pre>
 
