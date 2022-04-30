@@ -27,7 +27,7 @@
          }
 
          $.ajax(settings).done(function (response) {
-           console.log(response);
+           console.log("https://xkcd-anywhere-test.netlify.app/ ", response);
 
 var xkcdURL = response.img;
 var xkcdALT = response.alt
@@ -35,7 +35,7 @@ document.getElementById('xkcd').src = xkcdURL;
 document.getElementById('xkcdalt').innerText = xkcdALT;
 document.getElementById('xkcdurl').innerText = "https://xkcd.com/";
 
-console.log("xkcd data:", xkcdURL, " ", xkcdALT, " ");
+console.log("xkcd data:", xkcdURL, " ", xkcdALT, " "https://xkcd-anywhere-test.netlify.app/);
 
   });
 
