@@ -1,78 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>xkcd anywhere</title>
-    <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <title>xkcd anywhere</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-   
-  </head>
+  <style>
+    .xkcd-demo img {
+      max-width: 40%;
+      height: auto;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
 
-  <body>
- <img id="xkcd" style="width: 40%; height: 40%">
-<p id="xkcdalt"> </p>
-<p id="xkcdurl"></p>
-          <script>
-     var settings = {
-           "async": true,
-           "crossDomain": true,
-           "url": "https://xkcd.vercel.app/?comic=latest",
-           "method": "GET"
-         }
+<body class="section">
+  <div class="container">
 
-         $.ajax(settings).done(function (response) {
-           console.log("https://xkcd-anywhere-test.netlify.app/ ", response);
+    <h1 class="title">xkcd anywhere</h1>
+    <p class="subtitle">
+      Embed the latest xkcd comic on any website
+    </p>
 
-var xkcdURL = response.img;
-var xkcdALT = response.alt
-document.getElementById('xkcd').src = xkcdURL;
-document.getElementById('xkcdalt').innerText = xkcdALT;
-document.getElementById('xkcdurl').innerText = "https://xkcd.com/";
+    <!-- LIVE DEMO -->
+    <div class="box xkcd-demo">
+      <h2 class="title is-5">Live demo</h2>
 
-console.log("xkcd data:", xkcdURL, " ", xkcdALT, " https://xkcd-anywhere-test.netlify.app/");
+      <img id="xkcd-image" alt="">
+      <p id="xkcd-alt" class="mt-2"></p>
+      <p>
+        <a href="https://xkcd.com/" target="_blank" rel="noopener noreferrer">
+          View on xkcd.com
+        </a>
+      </p>
+    </div>
+    
+    <h2 class="title is-5">HTML (copy & paste)</h2>
+    <pre><code>&lt;div class="xkcd-widget"&gt;&lt;/div&gt;
+&lt;script src="https://shufflse.github.io/xkcd-anywhere-html/xkcd-widget.js" defer&gt;&lt;/script&gt;</code></pre>
+  </div>
 
-  });
-
-  </script>  
-<h3> HTML </h3>
-<pre>
-<code>
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;img id="xkcd"&gt;
-&lt;p id="xkcdalt"&gt; &lt;/p&gt;
-&lt;p id="xkcdurl"&gt; &lt;/p&gt;
-</code>
-</pre>
-<h3> JavaScript </h3>
-<pre>
-  <code>
-     var settings = {
-           "async": true,
-           "crossDomain": true,
-           "url": "https://xkcd.vercel.app/?comic=latest",
-           "method": "GET"
-         }
-
-         $.ajax(settings).done(function (response) {
-           console.log("https://xkcd.oliwhirl.one/", response);
-
-var xkcdURL = response.img;
-var xkcdALT = response.alt
-document.getElementById('xkcd').src = xkcdURL;
-document.getElementById('xkcdalt').innerText = xkcdALT;
-document.getElementById('xkcdurl').innerText = "https://xkcd.com/";
-
-console.log("xkcd data:", xkcdURL, " ", xkcdALT, " https://github.com/shufflse/");
-
-  });
-  </code>
-</pre>
+  <!-- DEMO SCRIPT -->
+  <script>
+    fetch("https://xkcd.vercel.app/?comic=latest")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("xkcd-image").src = data.img;
+        document.getElementById("xkcd-image").alt = data.alt;
+        document.getElementById("xkcd-alt").textContent = data.alt;
+      })
+      .catch(err => {
+        document.getElementById("xkcd-alt").textContent = "Failed to load xkcd 😢";
+        console.error(err);
+      });
+  </script>
 
 </body>
 </html>
